@@ -12,7 +12,7 @@ const Portfolio = () => {
             <div className="p-5 pb-0 text-2xl text-white bg-gray-900 h-full w-full bg-opacity-80 mt-[10rem]">
                 <div className="p-4 pb-0 flex flex-col items-center justify-center">
                     <h2 className="text-2xl md:text-4xl font-MsMadi text-center p-2 border-b mb-2">My Work Experience</h2>
-                    <ol class="relative border-l border-gray-200 dark:border-gray-700">
+                    <ol className="relative border-l border-gray-200 dark:border-gray-700">
                         {
                             [
                                 {
@@ -70,16 +70,16 @@ const Portfolio = () => {
                                 if (item.isInActive) return null;
                                 return (
 
-                                    <li class="mb-10 ml-6">
-                                        <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                                    <li className="mb-10 ml-6">
+                                        <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
                                             <img src={item.icon} />
                                         </span>
-                                        <h3 class="flex items-center mb-1 text-lg font-RobotoSlab text-white dark:text-white">
+                                        <h3 className="flex items-center mb-1 text-lg font-RobotoSlab text-white dark:text-white">
                                             {item.name}
-                                            <span class="bg-orange-400 text-blue-800 text-sm font-RobotoSlab mr-2 px-2.5 py-0.5 rounded dark:bg-orange-500 dark:text-blue-800 ml-3">{years}</span>
+                                            <span className="bg-orange-400 text-blue-800 text-sm font-RobotoSlab mr-2 px-2.5 py-0.5 rounded dark:bg-orange-500 dark:text-blue-800 ml-3">{years}</span>
                                         </h3>
-                                        <time class="block mb-2 text-sm font-RobotoSlab leading-none text-gray-400 dark:text-gray-500">{item.role}, {item.from.displayVal} to {item.to.displayVal}</time>
-                                        <p class="mb-4 text-base font-RobotoSlab break-words w-2/3 text-gray-500 dark:text-gray-400">{item.about}</p>
+                                        <time className="block mb-2 text-sm font-RobotoSlab leading-none text-gray-400 dark:text-gray-500">{item.role}, {item.from.displayVal} to {item.to.displayVal}</time>
+                                        <p className="mb-4 text-base font-RobotoSlab break-words w-2/3 text-gray-500 dark:text-gray-400">{item.about}</p>
                                     </li>
                                 )
                             })
