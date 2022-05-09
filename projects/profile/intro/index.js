@@ -35,12 +35,16 @@ const ProfileIntro = () => {
                             </button>
                         </div>
                         <div className="m-4 grid grid-rows-1 grid-cols-2 gap2">
-                            <MtlBadge id="html5" type='warning' path={"./images/icons/youtube.png"} tooltip="HTML5">
-                                My Youtube Life
-                            </MtlBadge>
-                            <MtlBadge id="html5" type='warning' path={"./images/icons/blogger.png"} tooltip="HTML5">
-                                My Blogger Life
-                            </MtlBadge>
+                            <a href="/life/youtuber">
+                                <MtlBadge id="youtuber" type='warning' path={"./images/icons/youtube.png"} tooltip="HTML5">
+                                    My Youtube Life
+                                </MtlBadge>
+                            </a>
+                            <a href="/life/blogger">
+                                <MtlBadge id="blogger" type='warning' path={"./images/icons/blogger.png"} tooltip="HTML5">
+                                    My Blogger Life
+                                </MtlBadge>
+                            </a>
                         </div>
                     </div>
                 </div>
