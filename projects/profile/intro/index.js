@@ -7,7 +7,7 @@ const ProfileIntro = () => {
 
     return (
         <div
-            className="bg-fixed bg-center bg-cover bg-[#ecebe7] bg-no-repeat"
+            className="bg-cover bg-fixed"
             style={{ backgroundImage: "url('./images/background/myTechLife.jpeg')" }}
         >
             <div className="flex flex-col items-center justify-around md:justify-center pt-[5rem]">

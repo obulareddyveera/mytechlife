@@ -5,7 +5,7 @@ const Portfolio = () => {
     return (
 
         <section
-            className="flex flex-col items-center justify-center bg-fixed bg-center bg-cover"
+            className="bg-fixed bg-cover"
             style={{ backgroundImage: "url('/images/background/horseMen.jpeg')" }}
         >
 
