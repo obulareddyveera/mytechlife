@@ -2,12 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Oswald:wght@200&display=swap');
+
+@layer components {
+  .stretch {
+    display: inline-block;
+    margin: 2rem;
+    -webkit-transform: scale(1.2, 2.4);
+    -moz-transform: scale(1.2, 2.4);
+    -o-transform: scale(1.2, 2.4);
+    transform: scale(1.2, 2.4);
+  }
+  .font-RobotoSlab {
+    font-family: 'Roboto Slab', serif;
+  }
+  .font-MsMadi {
+    font-family: 'Ms Madi', cursive;
+  }
+  .font-Oswald {
+    font-family: 'Oswald', sans-serif;
+  }
+  .font-Montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+#__next {
+  height: 100%;
+  width: 100%;
 }
 
 a {
