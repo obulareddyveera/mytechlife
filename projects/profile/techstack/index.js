@@ -22,14 +22,19 @@ const ProfileTechStack = () => {
                     Javascript (9+ years)
                 </MtlBadge>
             </div>
-            <div className="m-2 grid grid-rows-1 gap-4 grid-cols-2 md:grid-cols-3 gap4 items-center">
+            <div className="m-2 grid grid-rows-1 grid-cols-2 md:grid-cols-3 gap-1 md:gap-4 items-center">
                 <MtlBadge id="nodeJS" type='warning' path={"./images/icons/nodeJs.png"} tooltip="Node.JS">
                     Node.js (2+ years)
                 </MtlBadge>
                 <MtlBadge id="graphQL" type='warning' path={"./images/icons/graphql.png"} tooltip="GraphQL">
                     GraphQL (2 years)
                 </MtlBadge>
-                <MtlBadge id="nextJS" type='warning' path={"./images/icons/nextJs.jpeg"} tooltip="Next.JS">
+                <MtlBadge id="nextJS" type='warning' path={"./images/icons/nextJs.jpeg"} tooltip="Next.JS" className="hidden md:flex">
+                    Next.JS (3+ years)
+                </MtlBadge>
+            </div>
+            <div className="grid grid-rows-1 grid-cols-1 md:hidden">
+                <MtlBadge id="nextJS" type='warning' path={"./images/icons/nextJs.jpeg"} tooltip="Next.JS" className="visible  md:invisible">
                     Next.JS (3+ years)
                 </MtlBadge>
             </div>
