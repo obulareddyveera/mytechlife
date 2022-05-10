@@ -1,6 +1,6 @@
 import React from 'react'
-import PowerPoint from '../../projects/blogger/ppt'
+import AdminOAuth from '../../projects/blogger/oauth'
 
-const BloggerLife = () => <PowerPoint />
+const BloggerLife = () => <AdminOAuth />
 
 export default BloggerLife

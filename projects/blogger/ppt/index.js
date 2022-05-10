@@ -21,8 +21,8 @@ const PowerPoint = () => {
                             <div className="grid grid-rows-1 grid-cols-1 md:grid-cols-3 gap-1">
                                 <MtlCard
                                     className="h-80 m-2"
-                                    bgImage="/images/background/myTechLife.jpeg"
-                                    title="I am your card baby boy"
+                                    bgImage="https://miro.medium.com/max/1400/0*G_Bs41zkwYb6n80r.jpeg"
+                                    title="Deep dive into the Blockchain of Ethereum"
                                 >
                                 </MtlCard>
                             </div>
