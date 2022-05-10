@@ -9,7 +9,7 @@ const Portfolio = () => {
             style={{ backgroundImage: "url('/images/background/horseMen.jpeg')" }}
         >
 
-            <div className="p-5 pb-0 text-2xl text-white bg-gray-900 h-full w-full bg-opacity-80 mt-[10rem]">
+            <div className="p-5 pb-0 text-2xl text-white bg-gray-900 h-full w-full bg-opacity-80">
                 <div className="p-4 pb-0 flex flex-col items-center justify-center">
                     <h2 className="text-2xl md:text-4xl font-MsMadi text-center p-2 border-b mb-2">My Work Experience</h2>
                     <ol className="relative border-l border-gray-200 dark:border-gray-700">
