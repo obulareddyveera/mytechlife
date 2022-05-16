@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import MtlLogo from '../common/logo';
 
 const MtlAdminNav = () => {
     const emailRef = React.useRef(null)
@@ -11,7 +11,7 @@ const MtlAdminNav = () => {
     useEffect(() => {
 
         if (!session) {
-            router.push('/life/blogger')
+            router.push('/tag/blogger')
         }
 
     }, [session])
@@ -29,12 +29,10 @@ const MtlAdminNav = () => {
 
     return (
         <>
-            <nav className="bg-[#ecebe7] shadow-lg border-b border-white">
+            <nav className="max-w-screen-md min-w-full bg-[#ecebe7] shadow-lg border-b border-white">
                 <div className="flex justify-between">
-                    <div className="m-4 h-full w-full">
-                        <Link href="/" className="flex items-center">
-                            <span className="font-MsMadi text-xl">My Tech Life</span>
-                        </Link>
+                    <div className="m-4">
+                        <MtlLogo />
                     </div>
                     {
                         session && session.user && (

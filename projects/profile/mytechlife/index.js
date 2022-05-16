@@ -11,12 +11,12 @@ const MyTechLifeStack = () => {
                     <h2 className="text-4xl text-center font-MsMadi text-gray-500">My Tech Life</h2>
                 </div>
                 <div className="m-4 grid grid-rows-1 grid-cols-2 gap2">
-                    <a href="/life/youtuber">
+                    <a href="/tag/youtuber">
                         <MtlBadge id="youtuber" type='warning' path={"./images/icons/youtube.png"} tooltip="HTML5">
                             My Youtube Life
                         </MtlBadge>
                     </a>
-                    <a href="/life/blogger">
+                    <a href="/tag/blogger">
                         <MtlBadge id="blogger" type='warning' path={"./images/icons/blogger.png"} tooltip="HTML5">
                             My Blogger Life
                         </MtlBadge>
