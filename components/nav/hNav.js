@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router';
 import MtlLogo from '../common/logo';
+import { faVideo, faMoneyCheck, faChalkboardTeacher, faJarWheat, faDashboard, faArrowRight, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const MtlAdminNav = () => {
-    const emailRef = React.useRef(null)
     const router = useRouter();
-    const { data: session, status } = useSession()
-    const [blurAvathar, setBlurAvathar] = useState(false);
+    const [options, setOptions] = useState([])
+    const { data: session } = useSession()
     useEffect(() => {
 
         if (!session) {
@@ -16,54 +18,138 @@ const MtlAdminNav = () => {
 
     }, [session])
 
-    const handleCopyEmailStr = () => {
-        if (emailRef && emailRef.current) {
-            console.log('--= emailRef.current ', emailRef.current);
-            emailRef.current.focus();
-            emailRef.current.select();
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Fallback: Copying text command was ' + msg);
-        }
-    }
+    useEffect(() => {
+        setOptions([
+            {
+                id: Math.random(),
+                title: 'Dashboard',
+                icon: faDashboard,
+                link: 'dashboard'
+            },
+            {
+                id: Math.random(),
+                title: 'Storyboard',
+                icon: faJarWheat,
+                link: 'storyboard'
+            },
+            {
+                id: Math.random(),
+                title: 'Whiteboard',
+                icon: faChalkboardTeacher,
+                link: 'whiteboard'
+            },
+            {
+                id: Math.random(),
+                title: 'YouTube',
+                icon: faVideo,
+                expand: false,
+                items: [
+                    {
+                        id: Math.random(),
+                        title: 'Templates',
+                    },
+                    {
+                        id: Math.random(),
+                        title: 'Notes',
+                    },
+                ]
+            },
+            {
+                id: Math.random(),
+                title: 'Finance',
+                icon: faMoneyCheck,
+                expand: false,
+                items: [
+                    {
+                        id: Math.random(),
+                        title: 'Expense',
+                    },
+                    {
+                        id: Math.random(),
+                        title: 'Credits',
+                    },
+                    {
+                        id: Math.random(),
+                        title: 'Transactions',
+                    },
+                ]
+            }
+        ])
+    }, [])
 
     return (
         <>
-            <nav className="max-w-screen-md min-w-full bg-[#ecebe7] shadow-lg border-b border-white">
-                <div className="flex justify-between">
-                    <div className="m-4">
-                        <MtlLogo />
+            <div className="navbar bg-base-100">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex="0" className="btn btn-ghost btn-circle">
+                            <FontAwesomeIcon className="w-6 h-6" icon={faBars} />
+                        </label>
+                        <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            {
+                                options && options.map(rec => {
+                                    return (
+                                        <>
+                                            <li>
+                                                <a href={`#/${rec.link}`}>
+                                                    <FontAwesomeIcon className="w-4 h-4" icon={rec.icon} />
+                                                    {rec.title}
+                                                    {
+                                                        rec.items && rec.items.length > 0 && (
+                                                            <FontAwesomeIcon className="w-3 h-3" icon={faAngleRight} />
+                                                        )
+                                                    }
+                                                </a>
+                                                {
+                                                    rec.items && rec.items.length > 0 && (
+                                                        <ul className="p-2 shadow bg-base-100 rounded-box w-52">
+                                                            {
+                                                                rec.items.map(entity => {
+                                                                    return (
+                                                                        <li key={entity.link}>
+                                                                            <a href={`#/${entity.link}`}>
+
+                                                                                {entity.title}
+                                                                            </a>
+                                                                        </li>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </ul>
+                                                    )
+                                                }
+
+                                            </li>
+
+                                        </>
+                                    )
+                                })
+                            }
+                        </ul>
                     </div>
-                    {
-                        session && session.user && (
-                            <div className="dropdown inline-block relative font-RobotoSlab">
-                                <button className="py-2 px-4 rounded inline-flex items-center" onClick={() => setBlurAvathar(!blurAvathar)}>
-                                    <div className="relative w-12 h-12">
-                                        <img className="rounded-full border border-white shadow-sm" src={session.user.image} alt="user image" />
-                                        <div className="absolute top-0 right-0 h-3 w-3 my-1 border-2 border-white rounded-full bg-green-400 z-2"></div>
-                                    </div>
-                                </button>
-                                <ul className={`absolute right-3 ${blurAvathar ? 'display' : 'hidden'} w-56 min-w-full bg-gray-100 border-white border`}>
-                                    <li className="w-full border-b border-white p-2">
-                                        <div className="break-words text-center font-MsMadi">Welcome</div>
-                                    </li>
-                                    <li className="w-full border-b border-white p-2 flex justify-center">
-                                        <div className="break-words">{session.user.name}</div>
-                                    </li>
-                                    <li className="w-full flex justify-center p-4">
-                                        <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded inline-flex items-center" onClick={() => signOut()}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                                            </svg>
-                                            <span className="pl-2">Sign Out</span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        )
-                    }
                 </div>
-            </nav>
+                <div className="navbar-center">
+                    <MtlLogo />
+                </div>
+                <div className="navbar-end">
+                    <div className="dropdown dropdown-left">
+                        <label tabIndex="1" className="btn btn-ghost btn-circle">
+                            <img className="rounded-full border border-white shadow-sm" src={session.user.image} alt="user image" />
+                        </label>
+                        <ul tabIndex="1" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <li>
+                                <div className="break-words">{session.user.name}</div>
+                            </li>
+                            <li>
+                                <button className="btn btn-secondary text-white gap-2" onClick={signOut}>
+                                    <FontAwesomeIcon className="w-6 h-6" icon={faRightFromBracket} />
+                                    Sign Out
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
