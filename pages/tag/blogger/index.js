@@ -16,6 +16,8 @@ import MtlLogo from '../../../components/common/logo';
 import Templates from '../../../projects/blogger/templates';
 import TemplatesCurd from '../../../projects/blogger/templates/curd';
 import TemplatesDashboard from '../../../projects/blogger/templates/dashboard';
+import Whiteboard from '../../../projects/whitebord';
+import Storyboard from '../../../projects/blogger/storyboard';
 
 export default function Header() {
     const [links, setLinks] = useState([])
@@ -57,25 +59,31 @@ export default function Header() {
                 session ? (
                     <section className="w-screen h-screen">
                         <MtlAdminNav />
-                        <MtlSideNav sideMenu={sideMenu} setSideMenu={setSideMenu} />
-                        <div className={`w-full flex flex-col ${sideMenu ? 'pl-64' : 'pl-0'} h-full`}>
-                            <React.StrictMode>
-                                {
-                                    typeof window !== undefined && (
-                                        <HashRouter>
+                        <React.StrictMode>
+                            {
+                                typeof window !== undefined && (
+                                    <HashRouter>
+                                        <MtlSideNav sideMenu={sideMenu} setSideMenu={setSideMenu} />
+                                        <div className={`w-full flex flex-col ${sideMenu ? 'pl-64' : 'pl-0'} h-full`}>
                                             <MtlBreadcrumb sideMenu={sideMenu} setSideMenu={setSideMenu} breadcrumb={breadcrumbClient} mtlLinks={links} />
-                                            <div className={"w-full flex flex-col p-2"}>
-                                                <Routes>
-                                                    <Route path="/" element={<Templates breadcrumb={breadcrumbClient} />}>
-                                                        <Route path="dashboard" element={<TemplatesDashboard />} />
-                                                        <Route path="new" element={<TemplatesCurd />} />
-                                                    </Route>
-                                                </Routes>
+                                            <div className={"w-full flex flex-col "}>
+                                                <div className="p-2 m-2 bg-[#f5f5f5]">
+                                                    <Routes>
+                                                        <Route path="/" element={<Templates breadcrumb={breadcrumbClient} />}>
+                                                            <Route path="dashboard" element={<TemplatesDashboard />} />
+                                                            <Route path="new" element={<TemplatesCurd />} />
+                                                        </Route>
+                                                        <Route path="whiteboard" element={<Whiteboard sideMenu={sideMenu} setSideMenu={setSideMenu} breadcrumb={breadcrumbClient} />} />
+                                                        <Route path="storyboard" element={<Storyboard sideMenu={sideMenu} setSideMenu={setSideMenu} breadcrumb={breadcrumbClient} />} />
+                                                    </Routes>
+                                                </div>
                                             </div>
-                                        </HashRouter>)
-                                }
-                            </React.StrictMode>
-                        </div>
+                                        </div>
+
+                                    </HashRouter>)
+                            }
+                        </React.StrictMode>
+
                     </section>
                 ) : (
                     <section className="h-screen w-screen bg-[#ecebe7]">
